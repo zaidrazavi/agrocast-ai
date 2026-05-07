@@ -233,6 +233,14 @@ canvas{
 
 @media(max-width:768px){
 
+    .container{
+        padding:20px;
+    }
+
+    h1{
+        font-size:2rem;
+    }
+
     .controls{
         flex-direction:column;
     }
@@ -244,5 +252,9 @@ canvas{
 
     button{
         width:100%;
+    }
+
+    canvas{
+        height:300px !important;
     }
 }

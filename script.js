@@ -1,11 +1,4 @@
 // =============================
-// API KEY
-// =============================
-
-const API_KEY = "TEMP_KEY";
-
-
-// =============================
 // ELEMENTS
 // =============================
 
@@ -48,11 +41,21 @@ weatherBtn.addEventListener("click", async ()=>{
 
     try{
 
+        // SECURE BACKEND API CALL
         const response = await fetch(
-`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+            `https://agrocast-ai.onrender.com/weather?city=${city}`
         );
 
         const data = await response.json();
+
+        // Error handling
+        if(data.cod && data.cod !== 200){
+
+            weatherInfo.innerHTML =
+                "❌ City not found";
+
+            return;
+        }
 
         weatherInfo.innerHTML = `
 
@@ -86,6 +89,8 @@ weatherBtn.addEventListener("click", async ()=>{
 
     }catch(error){
 
+        console.log(error);
+
         weatherInfo.innerHTML =
             "❌ Failed to fetch weather";
     }
@@ -101,20 +106,30 @@ forecastBtn.addEventListener("click", async ()=>{
     insights.innerHTML =
         "Loading predictions...";
 
-    const response =
-        await fetch(
-            "https://agrocast-ai.onrender.com/forecast"
-        );
+    try{
 
-    const data =
-        await response.json();
+        const response =
+            await fetch(
+                "https://agrocast-ai.onrender.com/forecast"
+            );
 
-    forecastData =
-        data.humidity_predictions;
+        const data =
+            await response.json();
 
-    createChart(forecastData);
+        forecastData =
+            data.humidity_predictions;
 
-    generateInsights(forecastData);
+        createChart(forecastData);
+
+        generateInsights(forecastData);
+
+    }catch(error){
+
+        console.log(error);
+
+        insights.innerHTML =
+            "❌ Failed to load forecast";
+    }
 });
 
 
@@ -127,7 +142,12 @@ function createChart(data){
     const ctx =
         document.getElementById("forecastChart");
 
-    new Chart(ctx, {
+    // Destroy previous chart if exists
+    if(window.myChart){
+        window.myChart.destroy();
+    }
+
+    window.myChart = new Chart(ctx, {
 
         type:"line",
 
@@ -148,6 +168,13 @@ function createChart(data){
 
                 fill:true
             }]
+        },
+
+        options:{
+
+            responsive:true,
+
+            maintainAspectRatio:false
         }
     });
 }
@@ -193,6 +220,13 @@ function generateInsights(data){
 // =============================
 
 downloadBtn.addEventListener("click", ()=>{
+
+    if(forecastData.length === 0){
+
+        alert("Generate forecast first");
+
+        return;
+    }
 
     let csvContent =
         "data:text/csv;charset=utf-8,";

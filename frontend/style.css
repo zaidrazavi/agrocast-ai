@@ -1,0 +1,123 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#0f172a;
+    color:white;
+    min-height:100vh;
+    padding:30px;
+}
+
+.container{
+    width:100%;
+    max-width:1000px;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+    font-size:4rem;
+    margin-bottom:10px;
+}
+
+.subtitle{
+    text-align:center;
+    color:#94a3b8;
+    margin-bottom:30px;
+    font-size:1.2rem;
+}
+
+/* WEATHER CARD */
+.weather-card{
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.1);
+    backdrop-filter:blur(10px);
+
+    padding:25px;
+
+    border-radius:20px;
+
+    margin-bottom:25px;
+}
+
+#cityInput{
+    width:70%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    font-size:1rem;
+    margin-right:10px;
+    outline:none;
+}
+
+button{
+    background:#22c55e;
+    border:none;
+    color:white;
+
+    padding:15px 25px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    font-size:1rem;
+
+    transition:0.3s;
+}
+
+button:hover{
+    transform:scale(1.05);
+}
+
+#weatherInfo{
+    margin-top:20px;
+    line-height:2;
+    color:#e2e8f0;
+}
+
+.card{
+    background:#1e293b;
+    padding:20px;
+    border-radius:20px;
+    margin-bottom:25px;
+}
+
+.prediction-box{
+    background:#1e293b;
+    padding:20px;
+    border-radius:20px;
+    margin-bottom:25px;
+}
+
+#insights p{
+    margin:12px 0;
+    color:#cbd5e1;
+}
+
+canvas{
+    background:white;
+    border-radius:15px;
+    padding:10px;
+}
+
+/* MOBILE RESPONSIVE */
+@media(max-width:768px){
+
+    h1{
+        font-size:2.5rem;
+    }
+
+    #cityInput{
+        width:100%;
+        margin-bottom:15px;
+    }
+
+    button{
+        width:100%;
+    }
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AgroCast AI</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>🌾 AgroCast AI</h1>
+
+        <p class="subtitle">
+            AI-Powered Humidity Forecasting System
+        </p>
+
+        <!-- LIVE WEATHER CARD -->
+        <div class="weather-card">
+
+            <input
+                type="text"
+                id="cityInput"
+                placeholder="Enter city name"
+            >
+
+            <button id="weatherBtn">
+                Get Live Weather
+            </button>
+
+            <div id="weatherInfo"></div>
+
+        </div>
+
+        <!-- FORECAST BUTTON -->
+        <button id="forecastBtn">
+            Generate 100-Day Forecast
+        </button>
+
+        <!-- CHART -->
+        <div class="card">
+            <canvas id="forecastChart"></canvas>
+        </div>
+
+        <!-- INSIGHTS -->
+        <div class="prediction-box">
+
+            <h2>Forecast Insights</h2>
+
+            <div id="insights"></div>
+
+        </div>
+
+        <!-- DOWNLOAD -->
+        <button id="downloadBtn">
+            Download Forecast CSV
+        </button>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

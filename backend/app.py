@@ -39,7 +39,7 @@ if os.path.exists(model_path):
     print("✅ Model loaded successfully!")
 
 # =========================================
-# TRAIN MODEL IF NOT FOUND
+# TRAIN MODEL IF MODEL MISSING
 # =========================================
 
 else:
@@ -58,13 +58,13 @@ else:
     # Convert date column
     df['date'] = pd.to_datetime(df['date'])
 
-    # Set date as index
+    # Set index
     df.set_index('date', inplace=True)
 
-    # Select humidity column
+    # Select humidity
     humidity = df['humidity']
 
-    # Train SARIMAX model
+    # Train SARIMAX
     model_obj = SARIMAX(
         humidity,
         order=(1, 1, 1),
@@ -74,9 +74,14 @@ else:
     model = model_obj.fit()
 
     # Save model
+    os.makedirs(
+        os.path.dirname(model_path),
+        exist_ok=True
+    )
+
     joblib.dump(model, model_path)
 
-    print("✅ New model trained successfully!")
+    print("✅ Model trained successfully!")
 
 # =========================================
 # HOME ROUTE
@@ -85,9 +90,11 @@ else:
 @app.route('/')
 def home():
 
-    return {
-        "message": "🌾 AgroCast AI Backend Running Successfully"
-    }
+    return jsonify({
+
+        "message":
+        "🌾 AgroCast AI Backend Running Successfully"
+    })
 
 # =========================================
 # FORECAST ROUTE
@@ -98,15 +105,17 @@ def forecast():
 
     print("Generating predictions...")
 
-    # Predict next 100 days
     predictions = model.forecast(steps=100)
 
-    # Convert to clean list
-    result = [round(float(x), 2) for x in predictions]
+    result = [
+        round(float(x), 2)
+        for x in predictions
+    ]
 
     return jsonify({
 
         "forecast_days": 100,
+
         "humidity_predictions": result
     })
 
@@ -119,25 +128,43 @@ def weather():
 
     city = request.args.get('city')
 
+    # Validate city
     if not city:
 
         return jsonify({
-            "error": "City parameter missing"
+
+            "error":
+            "City parameter missing"
+
         }), 400
 
-    API_KEY = os.getenv("OPENWEATHER_API_KEY")
+    # Get API key
+    API_KEY = os.getenv(
+        "OPENWEATHER_API_KEY"
+    )
 
+    # Validate API key
     if not API_KEY:
 
         return jsonify({
-            "error": "API key missing"
+
+            "error":
+            "API key missing"
+
         }), 500
 
+    # OpenWeather URL
     url = (
-        f"https://api.openweathermap.org/data/2.5/weather"
-        f"?q={city}&appid={API_KEY}&units=metric"
+
+        "https://api.openweathermap.org"
+        "/data/2.5/weather"
+
+        f"?q={city}"
+        f"&appid={API_KEY}"
+        "&units=metric"
     )
 
+    # API request
     response = requests.get(url)
 
     data = response.json()

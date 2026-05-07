@@ -1,28 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AgroCast AI</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <!-- Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-
 <body>
+
+    <button class="toggle-btn" id="themeToggle">
+        🌙 Toggle Theme
+    </button>
 
     <div class="container">
 
         <h1>🌾 AgroCast AI</h1>
 
         <p class="subtitle">
-            AI-Powered Humidity Forecasting System
+            AI-Powered Humidity Forecasting Platform
         </p>
 
-        <!-- LIVE WEATHER CARD -->
-        <div class="weather-card">
+        <div class="search-box">
 
             <input
                 type="text"
@@ -31,40 +21,38 @@
             >
 
             <button id="weatherBtn">
-                Get Live Weather
+                Get Weather
             </button>
 
-            <div id="weatherInfo"></div>
+            <button id="forecastBtn">
+                Generate Forecast
+            </button>
+
+            <button id="downloadBtn">
+                Download CSV
+            </button>
 
         </div>
 
-        <!-- FORECAST BUTTON -->
-        <button id="forecastBtn">
-            Generate 100-Day Forecast
-        </button>
+        <div class="card">
+            <div id="weatherInfo"></div>
+        </div>
 
-        <!-- CHART -->
         <div class="card">
             <canvas id="forecastChart"></canvas>
         </div>
 
-        <!-- INSIGHTS -->
-        <div class="prediction-box">
-
-            <h2>Forecast Insights</h2>
-
+        <div class="card">
             <div id="insights"></div>
-
         </div>
 
-        <!-- DOWNLOAD -->
-        <button id="downloadBtn">
-            Download Forecast CSV
-        </button>
+        <div class="footer">
+            Built with ❤️ using AI & Time Series Forecasting
+        </div>
 
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="script.js"></script>
 
 </body>
-</html>

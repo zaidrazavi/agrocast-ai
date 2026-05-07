@@ -6,6 +6,7 @@
 }
 
 body{
+
     background:linear-gradient(
         135deg,
         #0f172a,
@@ -241,13 +242,12 @@ canvas{
         font-size:2rem;
     }
 
-    .controls{
+    .search-box{
         flex-direction:column;
     }
 
-    #cityInput{
+    input{
         width:100%;
-        margin-bottom:15px;
     }
 
     button{

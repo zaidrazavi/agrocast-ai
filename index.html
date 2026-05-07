@@ -1,17 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AgroCast AI</title>
+
+    <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+    <!-- CHART JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
 <body>
 
-    <button class="toggle-btn" id="themeToggle">
+    <!-- THEME TOGGLE -->
+    <button
+        class="toggle-btn"
+        id="themeToggle"
+    >
         🌙 Toggle Theme
     </button>
 
+    <!-- MAIN CONTAINER -->
     <div class="container">
 
+        <!-- TITLE -->
         <h1>🌾 AgroCast AI</h1>
 
         <p class="subtitle">
             AI-Powered Humidity Forecasting Platform
         </p>
 
+        <!-- SEARCH -->
         <div class="search-box">
 
             <input
@@ -34,25 +66,43 @@
 
         </div>
 
+        <!-- WEATHER CARD -->
         <div class="card">
+
             <div id="weatherInfo"></div>
+
         </div>
 
+        <!-- CHART CARD -->
         <div class="card">
+
             <canvas id="forecastChart"></canvas>
+
         </div>
 
+        <!-- INSIGHTS CARD -->
         <div class="card">
+
+            <h2>
+                Forecast Insights
+            </h2>
+
             <div id="insights"></div>
+
         </div>
 
+        <!-- FOOTER -->
         <div class="footer">
+
             Built with ❤️ using AI & Time Series Forecasting
+
         </div>
 
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- JS -->
     <script src="script.js"></script>
 
 </body>
+
+</html>

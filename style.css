@@ -27,6 +27,7 @@ body{
 }
 
 body.light{
+
     background:linear-gradient(
         135deg,
         #dbeafe,
@@ -68,4 +69,191 @@ body.light{
     to{
         opacity:1;
         transform:translateY(0);
+    }
+}
+
+h1{
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+    font-size:3rem;
+}
+
+.subtitle{
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+    opacity:0.8;
+
+    font-size:1.1rem;
+}
+
+.search-box{
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+    margin-bottom:25px;
+}
+
+input{
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:15px;
+
+    width:280px;
+
+    font-size:1rem;
+
+    outline:none;
+}
+
+button{
+
+    padding:15px 22px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:#22c55e;
+
+    color:white;
+
+    font-size:1rem;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+button:hover{
+
+    transform:translateY(-3px);
+
+    background:#16a34a;
+}
+
+.card{
+
+    background:rgba(255,255,255,0.07);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    margin-top:25px;
+
+    animation:fadeIn 0.8s ease;
+}
+
+.weather-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+    margin-top:20px;
+}
+
+.weather-item{
+
+    background:rgba(255,255,255,0.07);
+
+    padding:20px;
+
+    border-radius:18px;
+
+    text-align:center;
+
+    transition:0.3s;
+}
+
+.weather-item:hover{
+
+    transform:translateY(-5px);
+
+    background:rgba(255,255,255,0.15);
+}
+
+canvas{
+
+    margin-top:25px;
+
+    width:100% !important;
+
+    height:400px !important;
+}
+
+#insights{
+
+    margin-top:25px;
+
+    line-height:2;
+
+    font-size:1rem;
+}
+
+.toggle-btn{
+
+    position:absolute;
+
+    top:20px;
+
+    right:20px;
+
+    background:#f59e0b;
+}
+
+.footer{
+
+    margin-top:30px;
+
+    text-align:center;
+
+    opacity:0.7;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media(max-width:768px){
+
+    .container{
+        padding:20px;
+    }
+
+    h1{
+        font-size:2rem;
+    }
+
+    input{
+        width:100%;
+    }
+
+    .search-box{
+        flex-direction:column;
+    }
+
+    button{
+        width:100%;
+    }
+
+    canvas{
+        height:300px !important;
+    }
 }

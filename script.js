@@ -41,7 +41,6 @@ weatherBtn.addEventListener("click", async ()=>{
 
     try{
 
-        // SECURE BACKEND API CALL
         const response = await fetch(
             `https://agrocast-ai.onrender.com/weather?city=${city}`
         );
@@ -142,8 +141,9 @@ function createChart(data){
     const ctx =
         document.getElementById("forecastChart");
 
-    // Destroy previous chart if exists
+    // Destroy old chart
     if(window.myChart){
+
         window.myChart.destroy();
     }
 
@@ -257,14 +257,16 @@ downloadBtn.addEventListener("click", ()=>{
 
     link.click();
 });
+
+
 // =============================
 // DARK/LIGHT MODE
 // =============================
 
-const themeToggle =
-    document.getElementById("themeToggle");
+const themeBtn =
+    document.getElementById("themeBtn");
 
-themeToggle.addEventListener("click",()=>{
+themeBtn.addEventListener("click", ()=>{
 
     document.body.classList.toggle("light");
 });

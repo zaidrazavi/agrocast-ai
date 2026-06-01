@@ -1,108 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>AgroCast AI</title>
-
-    <!-- CSS -->
-    <link
-        rel="stylesheet"
-        href="style.css"
-    >
-
-    <!-- CHART JS -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AgroCast AI – Humidity Intelligence</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 </head>
-
 <body>
+<div class="wrap">
 
-    <!-- THEME TOGGLE -->
-    <button
-        class="toggle-btn"
-        id="themeToggle"
-    >
-        🌙 Toggle Theme
-    </button>
-
-    <!-- MAIN CONTAINER -->
-    <div class="container">
-
-        <!-- TITLE -->
-        <h1>🌾 AgroCast AI</h1>
-
-        <p class="subtitle">
-            AI-Powered Humidity Forecasting Platform
-        </p>
-
-        <!-- SEARCH -->
-        <div class="search-box">
-
-            <input
-                type="text"
-                id="cityInput"
-                placeholder="Enter city name"
-            >
-
-            <button id="weatherBtn">
-                Get Weather
-            </button>
-
-            <button id="forecastBtn">
-                Generate Forecast
-            </button>
-
-            <button id="downloadBtn">
-                Download CSV
-            </button>
-
-        </div>
-
-        <!-- WEATHER CARD -->
-        <div class="card">
-
-            <div id="weatherInfo"></div>
-
-        </div>
-
-        <!-- CHART CARD -->
-        <div class="card">
-
-            <canvas id="forecastChart"></canvas>
-
-        </div>
-
-        <!-- INSIGHTS CARD -->
-        <div class="card">
-
-            <h2>
-                Forecast Insights
-            </h2>
-
-            <div id="insights"></div>
-
-        </div>
-
-        <!-- FOOTER -->
-        <div class="footer">
-
-            Built with ❤️ using AI & Time Series Forecasting
-
-        </div>
-
+  <!-- HEADER -->
+  <header class="header">
+    <div class="logo">
+      <div class="logo-icon">🌾</div>
+      <div>
+        <div class="logo-text">AgroCast AI</div>
+        <div class="logo-sub">Humidity Intelligence</div>
+      </div>
     </div>
+    <div class="header-right">
+      <div class="status-dot"></div>
+      <span class="status-txt">API Live</span>
+      <button class="theme-toggle" id="themeToggle">☀ / 🌙</button>
+    </div>
+  </header>
 
-    <!-- JS -->
-    <script src="script.js"></script>
+  <!-- SEARCH -->
+  <div class="search-section">
+    <div class="search-label">Location</div>
+    <div class="search-row">
+      <input class="city-input" id="cityInput" type="text" placeholder="Enter city name (e.g. Mumbai, Delhi)" />
+      <button class="btn btn-primary" id="weatherBtn">Get Weather</button>
+      <button class="btn btn-secondary" id="forecastBtn">Run Forecast</button>
+      <button class="btn btn-ghost" id="downloadBtn">⬇ CSV</button>
+    </div>
+  </div>
 
+  <!-- WEATHER CARD -->
+  <div class="card full-card" id="weatherCard">
+    <div class="card-label">Live Weather</div>
+    <div id="weatherContent">
+      <div class="w-placeholder">
+        <div class="w-placeholder-icon">🌍</div>
+        <span>Enter a city name and click Get Weather</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- STAT CARDS -->
+  <div id="statsRow" class="grid-3" style="display:none">
+    <div class="card">
+      <div class="card-title">Avg Forecast Humidity</div>
+      <div class="card-value green" id="statAvg">—<span class="card-unit">%</span></div>
+      <div class="card-change" id="statAvgTip"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Peak Humidity (Day)</div>
+      <div class="card-value amber" id="statPeak">—</div>
+      <div class="card-change" id="statPeakTip"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">Lowest Humidity (Day)</div>
+      <div class="card-value sky" id="statLow">—</div>
+      <div class="card-change" id="statLowTip"></div>
+    </div>
+  </div>
+
+  <!-- CHART -->
+  <div class="card full-card">
+    <div class="card-label">100-Day Humidity Forecast</div>
+    <div id="chartWrap">
+      <div class="chart-placeholder">
+        <span style="font-size:36px;opacity:.2">📈</span>
+        <span>Click "Run Forecast" to generate predictions</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- INSIGHTS -->
+  <div class="card full-card">
+    <div class="card-label">AI Forecast Insights</div>
+    <div id="insightsWrap">
+      <div class="empty-insights">Run the forecast to see crop-specific insights and recommendations.</div>
+    </div>
+  </div>
+
+  <div class="footer">
+    Built by <a href="https://github.com/zaidrazavi" target="_blank">Zaid Razavi</a> &middot; AgroCast AI &middot; SARIMAX Time Series Model
+  </div>
+
+</div>
+<script src="script.js"></script>
 </body>
-
 </html>
